@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Edit Product</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" value="{{ product.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Description</label>
+            <textarea name="description" class="form-control" required>{{ product.description }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label>Price</label>
+            <input type="number" step="0.01" name="price" class="form-control" value="{{ product.price }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Image URL</label>
+            <input type="text" name="image_url" class="form-control" value="{{ product.image_url }}">
+        </div>
+        <button type="submit" class="btn btn-warning">Update Product</button>
+    </form>
+</div>
+{% endblock %}

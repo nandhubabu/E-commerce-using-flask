@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My E-Commerce{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Products</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="text-primary"><strong>${{ product.price }}</strong></p>
+                    <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<form action="{{ url_for('filter_products') }}" method="GET" class="mb-3">
+    <label>Min Price:</label>
+    <input type="number" name="min_price" class="form-control" required>
+    <label>Max Price:</label>
+    <input type="number" name="max_price" class="form-control" required>
+    <button type="submit" class="btn btn-secondary mt-2">Filter</button>
+</form>
+
+{% endblock %}

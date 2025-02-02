@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Order History{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Order History</h2>
+    {% for order in orders %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Order ID: {{ order.id }}</h5>
+            <p>Placed on: {{ order.timestamp }}</p>
+            <p>Total Price: ${{ order.total_price }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
